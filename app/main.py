@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router
 from app.core.config import settings
-
+import os
+import uvicorn
 app = FastAPI(title=settings.APP_NAME)
 
 # CORS (important for React later)
@@ -21,3 +22,5 @@ async def startup_event():
     import logging
     logging.basicConfig(level=logging.INFO)
     logging.getLogger(__name__).info("✅ App started and ready.")
+
+    
