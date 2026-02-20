@@ -15,3 +15,9 @@ app.add_middleware(
 )
 
 app.include_router(router, prefix=settings.API_V1_STR)
+
+@app.on_event("startup")
+async def startup_event():
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    logging.getLogger(__name__).info("✅ App started and ready.")
